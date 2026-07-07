@@ -81,7 +81,7 @@ const LandingMission = () => {
             <motion.div
               variants={fadeUp}
               custom={IMAGES_DELAY}
-              className="relative h-[353px] w-[50.4%] tablet:h-[473px] tablet:w-[49.25%]"
+              className="relative h-[353px] w-[50.4%] tablet:h-[473px] tablet:w-[49.25%] min-[1440px]:h-[32.85vw]"
             >
               <Image
                 src="/images/landing/mission/photo-blur.png"
@@ -95,14 +95,14 @@ const LandingMission = () => {
             <motion.div
               variants={fadeUp}
               custom={IMAGES_DELAY + 0.1}
-              className="relative h-[353px] w-[49.6%] tablet:h-[396px] tablet:w-[50.75%]"
+              className="relative h-[353px] w-[49.6%] tablet:h-[396px] tablet:w-[50.75%] min-[1440px]:h-[27.5vw]"
             >
               <Image
                 src="/images/landing/mission/photo-warm.png"
                 alt=""
                 fill
                 sizes="(max-width: 767px) 100vw, 51vw"
-                className="object-cover"
+                className="object-cover object-[50%_30%]"
               />
             </motion.div>
 
@@ -171,7 +171,8 @@ const LandingMission = () => {
           <div
             aria-hidden
             className="pointer-events-none absolute -top-[284px] left-1/2 h-[300px] w-[900px] -translate-x-1/2
-            tablet:-top-[473px] tablet:h-[609px] tablet:w-[3372px]"
+            tablet:-top-[473px] tablet:h-[609px] tablet:w-[3372px]
+            min-[1440px]:-top-[32.85vw] min-[1440px]:h-[42.3vw] min-[1440px]:w-[234.2vw]"
           >
             <Image
               src="/images/landing/mission/ellipse.svg"
