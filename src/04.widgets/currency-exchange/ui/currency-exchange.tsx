@@ -1,10 +1,35 @@
 "use client";
 
 import { useSwapForm } from "@/05.features";
+import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import CurrencyField from "./currency-field";
 import SwapConfirmationModal from "./swap-confirmation-modal";
 import SwapDirectionButton from "./swap-direction-button";
+
+const container: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
 
 const CurrencyExchange = () => {
   const t = useTranslations("swap");
@@ -27,12 +52,23 @@ const CurrencyExchange = () => {
   } = useSwapForm();
 
   return (
-    <section className="flex w-full max-w-[500px] flex-col gap-8 rounded-3xl bg-[#1d1d1d] p-6 tablet:p-10">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={container}
+      className="flex w-full max-w-[500px] flex-col gap-8 rounded-3xl bg-[#1d1d1d] p-6 tablet:p-10"
+    >
       <div className="flex w-full flex-col gap-3">
-        <h2 className="text-xl font-medium leading-[1.2] text-[#f1f1f1]">
+        <motion.h2
+          variants={item}
+          className="text-xl font-medium leading-[1.2] text-[#f1f1f1]"
+        >
           {t("selectCryptocurrency")}
-        </h2>
-        <div className="flex w-full flex-col gap-1 rounded-[20px] border border-[#272727] p-5">
+        </motion.h2>
+        <motion.div
+          variants={item}
+          className="flex w-full flex-col gap-1 rounded-[20px] border border-[#272727] p-5"
+        >
           <CurrencyField
             label={t("youSend")}
             value={fromCurrency}
@@ -58,14 +94,15 @@ const CurrencyExchange = () => {
             onAmountChange={changeReceiveAmount}
             isCalculating={isCalculating}
           />
-        </div>
+        </motion.div>
         {isPreviewError && (
           <p role="alert" className="text-sm leading-[18px] text-[#ff6b6b]">
             {t("previewError")}
           </p>
         )}
       </div>
-      <button
+      <motion.button
+        variants={item}
         type="button"
         disabled={!isConfirmEnabled}
         onClick={confirmSwap}
@@ -74,12 +111,12 @@ const CurrencyExchange = () => {
         transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
       >
         {t("next")}
-      </button>
+      </motion.button>
       <SwapConfirmationModal
         confirmation={confirmation}
         onClose={closeConfirmation}
       />
-    </section>
+    </motion.section>
   );
 };
 
