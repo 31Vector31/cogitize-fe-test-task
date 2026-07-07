@@ -1,17 +1,26 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { currencyApi, swapApi } from "@/06.entities";
+import {
+  combineReducers,
+  configureStore,
+  type UnknownAction,
+} from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-const testReducer = (state = {}) => state;
-
-const combines = combineReducers({
-  test: testReducer,
+const combinedReducer = combineReducers({
+  [currencyApi.reducerPath]: currencyApi.reducer,
+  [swapApi.reducerPath]: swapApi.reducer,
 });
 
-const rootReducer = (state, action) => {
+type CombinedState = ReturnType<typeof combinedReducer>;
+
+const rootReducer = (
+  state: CombinedState | undefined,
+  action: UnknownAction,
+) => {
   if (action.type === "user/logout") {
     state = undefined;
   }
-  return combines(state, action);
+  return combinedReducer(state, action);
 };
 
 export const store = configureStore({
@@ -19,7 +28,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    }).concat(currencyApi.middleware, swapApi.middleware),
 });
 
 setupListeners(store.dispatch);
+
+export default store;

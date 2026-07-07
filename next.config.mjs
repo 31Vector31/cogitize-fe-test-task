@@ -1,10 +1,8 @@
-/** @type {import('next').NextConfig} */
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
 const config = () => {
-  /** @type {import('next').NextConfig} */
   const config = {
     redirects: async () => {
       return [
@@ -12,6 +10,18 @@ const config = () => {
           source: "/",
           destination: "/guide",
           permanent: true,
+        },
+      ];
+    },
+    rewrites: async () => {
+      return [
+        {
+          source: "/api/miex/:path*",
+          destination: "https://api.miex.one/api/v1/:path*",
+        },
+        {
+          source: "/api/gateway/:path*",
+          destination: "https://devgateway.miex.one/api/:path*",
         },
       ];
     },

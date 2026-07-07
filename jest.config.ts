@@ -1,13 +1,13 @@
+import type { Config } from "jest";
 import nextJest from "next/jest";
 
 const createJestConfig = nextJest({
   dir: "./",
 });
 
-const customJestConfig = {
+const customJestConfig: Config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jest-environment-jsdom",
-  transformIgnorePatterns: ["/node_modules/(?!(framer-motion)/)"],
   preset: "ts-jest",
   transform: {
     "^.+\\.(ts|tsx)?$": "ts-jest",
@@ -15,16 +15,35 @@ const customJestConfig = {
   },
   globals: {
     "ts-jest": {
-      isolatedModules: true, // Включаем для более быстрого компилятора TypeScript
+      isolatedModules: true,
     },
   },
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1", // Если у вас есть алиасы
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   moduleDirectories: ["node_modules", "<rootDir>/"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  // Поддержка ESModules
   extensionsToTreatAsEsm: [".ts", ".tsx"],
 };
 
-module.exports = createJestConfig(customJestConfig);
+const ESM_MODULES = [
+  "framer-motion",
+  "next-intl",
+  "use-intl",
+  "@formatjs",
+  "intl-messageformat",
+];
+
+const config = async (): Promise<Config> => {
+  const nextJestConfig = await createJestConfig(customJestConfig)();
+
+  return {
+    ...nextJestConfig,
+    transformIgnorePatterns: [
+      `[/\\\\]node_modules[/\\\\](?!(${ESM_MODULES.join("|")})[/\\\\])`,
+      "^.+\\.module\\.(css|sass|scss)$",
+    ],
+  };
+};
+
+module.exports = config;

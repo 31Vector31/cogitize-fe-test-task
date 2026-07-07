@@ -1,9 +1,10 @@
 declare global {
-  interface Window {}
-
   namespace NodeJS {
     interface ProcessEnv {
-      /** Authorization token for the bot. This is used to validate the hash's authenticity. */
+      NEXT_PUBLIC_API?: string;
+      NEXT_PUBLIC_GATEWAY_API?: string;
     }
   }
 }
+
+export {};

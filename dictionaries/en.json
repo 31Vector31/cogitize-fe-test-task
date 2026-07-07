@@ -1,1 +1,98 @@
-{}
+{
+  "swap": {
+    "title": "Convert",
+    "selectCryptocurrency": "Select cryptocurrency",
+    "youSend": "You send",
+    "youReceive": "You Receive",
+    "changeDirection": "Change direction",
+    "selectCurrency": "Select currency",
+    "searchCoins": "Search coins",
+    "noResults": "Nothing found",
+    "loading": "Loading",
+    "loadingError": "Failed to load coins",
+    "retry": "Retry",
+    "previewError": "Failed to calculate the rate. Please try again.",
+    "swapSuccess": "You have successfully exchanged {fromAmount} {fromSymbol} → {toAmount} {toSymbol}",
+    "ok": "OK",
+    "next": "Next"
+  },
+  "landing": {
+    "nav": {
+      "home": "Home",
+      "howItWorks": "How it works",
+      "features": "Features",
+      "forWhom": "For whom"
+    },
+    "logIn": "Log in",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "note": "Independent minds only",
+    "tagline": "Phase is your personal editorial storefront",
+    "cta": "Create you Phase",
+    "menuCta": "Create you Gifty",
+    "marquee": {
+      "identity": "YOUR IDENTITY",
+      "freeForever": "FREE FOREVER",
+      "share": "SHARE WITH YOUR AUDIENCE"
+    },
+    "mission": {
+      "caption": "Creators inspire millions every single day",
+      "title": "Phase is a space for creators to be seen",
+      "tribeTitle1": "Just you and your tribe",
+      "tribeTitle2": "Zero algorithm noise.",
+      "tribeText": "Only your raw concepts, your curated drops, and the community that stands by your side"
+    },
+    "steps": {
+      "title": "Three steps to drops",
+      "tag": "It's that simple",
+      "asideTitle": "Create, add, share.",
+      "asideText": "Everything you need to start receiving gifts without the friction",
+      "brand": "Gifty",
+      "goToStep": "Go to step {number}",
+      "step1": {
+        "title": "Create your account",
+        "text": "Sign up in under a minute. Claim your unique name and make the space yours."
+      },
+      "step2": {
+        "title": "Add your wishes",
+        "text": "Create lots: add a photo, title, price, and link to the item. Dream big — from a cup of coffee to a brand-new microphone."
+      },
+      "step3": {
+        "title": "Share with your fans",
+        "text": "Copy your link and drop it in your bio, stories, or video description. Fans visit your storefront and gift you exactly what you want."
+      }
+    },
+    "benefits": {
+      "exhibition": {
+        "description": "A premium editorial layout featuring your aesthetic",
+        "descriptionMobile": "Your own page with your avatar, name, and wishlist.",
+        "title": "Exhibition",
+        "tag": "100% your DNA"
+      },
+      "capsules": {
+        "description": "Publish, modify your capsule drops instantly.",
+        "descriptionMobile": "Add, edit, or remove wishes anytime.",
+        "title": "Capsules",
+        "tag": "No messy feeds"
+      },
+      "telemetry": {
+        "description": "Visitors get live updates on what’s currently available.",
+        "descriptionMobile": "Fans see what’s taken.",
+        "title": "Telemetry",
+        "tag": "No missed drops"
+      },
+      "domain": {
+        "description": "A short, clean web address — phase.com/your-name.",
+        "descriptionMobile": "One short link — phase.com/your-name.",
+        "title": "Domain",
+        "tag": "Instant access"
+      },
+      "impact": {
+        "description": "Discover what your audience interacts with most.",
+        "descriptionMobile": "See how many people visited your storefront.",
+        "title": "Impact",
+        "tag": "Deep audience data"
+      }
+    }
+  }
+}
